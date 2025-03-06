@@ -10,9 +10,9 @@ import Foundation
 struct Recipe: Codable {
     let cuisine: String
     let name: String
-    let photoURLLarge: String
-    let photoURLSmall: String
+    let photoUrlLarge: String?
+    let photoUrlSmall: String?
     let uuid: String
-    let sourceURL: String
-    let youtubeURL: String
+    let sourceUrl: String?
+    let youtubeUrl: String?
 }
