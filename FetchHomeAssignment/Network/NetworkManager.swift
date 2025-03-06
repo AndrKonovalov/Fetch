@@ -14,7 +14,7 @@ final class NetworkManager {
 
     private init() {}
 
-    public func loadRecipes(from urlString: String) async throws -> [Recipe] {
+    public func loadRecipes(from urlString: String) async throws -> RecipeResponse {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -22,6 +22,6 @@ final class NetworkManager {
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode([Recipe].self, from: data)
+        return try decoder.decode(RecipeResponse.self, from: data)
     }
 }

@@ -12,17 +12,15 @@ final class ImageCacheLoader {
 
     private let cache = NSCache<NSString, UIImage>()
 
-    init(){}
+    init() { }
 
     public func loadImage(from urlString: String) async throws -> UIImage? {
         if let cachedImage = cache.object(forKey: urlString as NSString) {
             return cachedImage
         }
-        
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
-        
         let (data, _) = try await URLSession.shared.data(from: url)
         if let image = UIImage(data: data) {
             cache.setObject(image, forKey: urlString as NSString)
