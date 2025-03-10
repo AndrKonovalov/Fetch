@@ -19,6 +19,10 @@ struct ContentView: View {
     }
 }
 
+
 #Preview {
-    ContentView()
+    HStack{
+        ContentView()
+    }
+
 }
