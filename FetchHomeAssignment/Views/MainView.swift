@@ -8,17 +8,59 @@
 import SwiftUI
 
 struct MainView: View {
+
+    @Namespace private var animatedNamespace
+
+    @State var viewModel = RecipeViewModel()
+    @State var showAlert = false
+    @State var scrollTo: String?
+    @State var selectedSection: String = ""
+    @State private var alertMessage = ""
+
+    init() {
+        _scrollTo = State(initialValue: viewModel.sortedCuisines.first ?? "")
+    }
     var body: some View {
+        ZStack {
+            switch viewModel.currentState {
+            case .idle, .loading:
+                LoadingView()
+                    .transition(.opacity)
+            case .loaded:
+                MainContentView(viewModel: $viewModel,
+                                scrollTo: $scrollTo,
+                                selectedSection: $selectedSection)
+                .transition(.opacity)
 
-        LazyVStack {}
+                VStack {
+                    ControlsBarView(scrollTo: $scrollTo,
+                                    selectedSection: $selectedSection,
+                                    sections: viewModel.sortedCuisines,
+                                    animationNameSpace: animatedNamespace)
+                    Spacer()
+                }
 
-//        LazyVGrid(columns: <#[GridItem]#>) {}
+            case .error:
+                EmptyView()
+                    .transition(.slide)
+                    .onChange( of: viewModel.currentState) { _, newState in
+                        if case .error(let error) = newState {
+                            alertMessage = error.localizedDescription
+                            showAlert = true
+                        }
+                    }
+            }
+        }
+        .animation(.easeInOut(duration: 1.2), value: viewModel.currentState)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text(alertMessage),
+                  dismissButton: .default(Text("OK")))
+        }
     }
 }
 
-
 #Preview {
-    HStack{
+    HStack {
         MainView()
     }
 
