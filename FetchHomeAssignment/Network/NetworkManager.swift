@@ -10,18 +10,12 @@ import Foundation
 final class NetworkManager {
     public static var shared = NetworkManager()
 
-    public var imageCacheLoader = ImageCacheLoader()
+    public var imageCacheWorker: ImageFetchWorker
+    public var recipeFetchWorker: RecipeFetchWorker
 
-    private init() {}
-
-    public func loadRecipes(from urlString: String) async throws -> RecipeResponse {
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
-
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(RecipeResponse.self, from: data)
+    private init(imageCacheWorker: @autoclosure @escaping () -> ImageFetchWorker = { ImageCacheLoader() }(),
+                 recipeFetchWorker: @autoclosure @escaping () -> RecipeFetchWorker = { RecipeLoader() }()) {
+        self.imageCacheWorker = imageCacheWorker()
+        self.recipeFetchWorker = recipeFetchWorker()
     }
 }

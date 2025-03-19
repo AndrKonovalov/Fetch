@@ -24,7 +24,7 @@ final class NetworkManagerTests: XCTestCase {
 
     func testInvalidURL() async {
         do {
-            _ = try await networkManager?.loadRecipes(from: Endpoints.invalidURL)
+            _ = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.invalidURL)
         } catch let error as URLError where error.code == .unsupportedURL {
             XCTAssert(true)
         } catch let error {
@@ -34,7 +34,7 @@ final class NetworkManagerTests: XCTestCase {
 
     func testBadURL() async {
         do {
-            _ = try await networkManager?.loadRecipes(from: Endpoints.badURL)
+            _ = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.badURL)
         } catch let error as URLError where error.code == .badURL {
             XCTAssert(true)
         } catch let error {
@@ -44,7 +44,7 @@ final class NetworkManagerTests: XCTestCase {
 
     func testAccessMailformedData() async {
         do {
-            _ = try await networkManager?.loadRecipes(from: Endpoints.mailformedData)
+            _ = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.mailformedData)
         } catch DecodingError.keyNotFound(_, _) {
             XCTAssert(true)
         } catch let error {
@@ -54,7 +54,7 @@ final class NetworkManagerTests: XCTestCase {
 
     func testAccessEmptyData() async {
         do {
-            _ = try await networkManager?.loadRecipes(from: Endpoints.emptyData)
+            _ = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.emptyData)
         } catch DecodingError.valueNotFound(_, _) {
             XCTAssert(true)
         } catch let error {
@@ -64,7 +64,7 @@ final class NetworkManagerTests: XCTestCase {
 
     func testURLWrongAddress() async {
         do {
-            _ = try await networkManager?.loadRecipes(from: Endpoints.accessDeniedURL)
+            _ = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.accessDeniedURL)
         } catch DecodingError.dataCorrupted(_) {
             XCTAssert(true)
         } catch let error {
@@ -73,7 +73,7 @@ final class NetworkManagerTests: XCTestCase {
     }
 
     func testFetchValidData() async throws {
-        let recipes = try await networkManager?.loadRecipes(from: Endpoints.validData)
+        let recipes = try await networkManager?.recipeFetchWorker.loadRecipes(from: Endpoints.validData)
         XCTAssertNotNil(recipes)
     }
 }

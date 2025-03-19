@@ -8,22 +8,22 @@
 import Foundation
 import UIKit
 
-final class ImageCacheLoader {
+final class ImageCacheLoader: ImageFetchWorker {
 
     private let cache = NSCache<NSString, UIImage>()
 
     init() { }
 
-    public func loadImage(from urlString: String) async throws -> UIImage? {
-        if let cachedImage = cache.object(forKey: urlString as NSString) {
+    public func loadImage(from url: URL) async throws -> UIImage {
+        let key = url.absoluteString as NSString
+
+        if let cachedImage = cache.object(forKey: key) {
             return cachedImage
         }
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
+
         let (data, _) = try await URLSession.shared.data(from: url)
         if let image = UIImage(data: data) {
-            cache.setObject(image, forKey: urlString as NSString)
+            cache.setObject(image, forKey: key)
             return image
         } else {
             throw URLError(.cannotParseResponse)
