@@ -17,8 +17,9 @@ struct GridView: View {
     var body: some View {
         LazyVGrid(columns: gridColumns) {
             ForEach(viewModel.recipes) { (recipe: RecipeDTO) in
-                GridCell(viewModel: $viewModel,
-                         recipe: recipe)
+                SectionWrapper(viewModel: $viewModel, cuisine: recipe.cuisine) {
+                    GridCell(viewModel: $0, recipe: $1)
+                }
             }
         }
     }
