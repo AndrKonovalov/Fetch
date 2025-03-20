@@ -62,7 +62,11 @@ struct ListCell: View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
             .task {
-                image = try? await viewModel.getImage(for: recipe)
+                do {
+                    image = try await viewModel.getImage(for: recipe)
+                } catch {
+                    image = UIImage(systemName: "photo")
+                }
             }
         }
     }

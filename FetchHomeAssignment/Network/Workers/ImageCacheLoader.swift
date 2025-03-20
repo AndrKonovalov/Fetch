@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ImageCacheLoader: ImageFetchWorker {
+actor ImageCacheLoader: ImageFetchWorker {
 
     private let cache = DataStore.shared.imageCache
 

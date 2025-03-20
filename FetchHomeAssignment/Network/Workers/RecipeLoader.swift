@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecipeLoader: RecipeFetchWorker {
+actor RecipeLoader: RecipeFetchWorker {
 
     public func loadRecipes(from urlString: String) async throws -> RecipeResponse {
         guard let url = URL(string: urlString) else {
