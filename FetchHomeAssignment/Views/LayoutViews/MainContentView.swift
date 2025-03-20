@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MainContentView: View {
-    @Binding var viewModel: RecipeViewModel
+    @ObservedObject var viewModel: RecipeViewModel
     @Binding var scrollTo: String?
     @Binding var selectedSection: String
 
@@ -19,12 +19,12 @@ struct MainContentView: View {
         ScrollViewReader { proxy in
             ScrollView(.vertical) {
                 if viewModel.presentAsList {
-                    ListView(viewModel: $viewModel,
+                    ListView(viewModel: viewModel,
                              scrollTo: $scrollTo,
                              selectedSection: $selectedSection,
                              headerMinY: headerMinY)
                 } else {
-                    GridView(viewModel: $viewModel)
+                    GridView(viewModel: viewModel)
                 }
             }
             .padding(.top)

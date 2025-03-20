@@ -12,7 +12,7 @@ struct ControlsBarView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var scrollTo: String?
     @Binding var selectedSection: String
-    var sections: [String]
+    var sections: [String]?
 
     let animationNameSpace: Namespace.ID
 

@@ -11,15 +11,13 @@ struct MainView: View {
 
     @Namespace private var animatedNamespace
 
-    @State var viewModel = RecipeViewModel()
+    @StateObject var viewModel = RecipeViewModel()
+
     @State var showAlert = false
     @State var scrollTo: String?
     @State var selectedSection: String = ""
     @State private var alertMessage = ""
 
-    init() {
-        _scrollTo = State(initialValue: viewModel.sortedCuisines.first ?? "")
-    }
     var body: some View {
         ZStack {
             switch viewModel.currentState {
@@ -27,7 +25,7 @@ struct MainView: View {
                 LoadingView()
                     .transition(.opacity)
             case .loaded:
-                MainContentView(viewModel: $viewModel,
+                MainContentView(viewModel: viewModel,
                                 scrollTo: $scrollTo,
                                 selectedSection: $selectedSection)
                 .transition(.opacity)
@@ -50,6 +48,10 @@ struct MainView: View {
                         }
                     }
             }
+        }
+        .task {
+            await viewModel.getRecipes()
+            scrollTo = viewModel.sortedCuisines.first
         }
         .animation(.easeInOut(duration: 1.2), value: viewModel.currentState)
         .alert(isPresented: $showAlert) {

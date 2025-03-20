@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GridCell: View {
 
-    @Binding var viewModel: RecipeViewModel
+    @ObservedObject var viewModel: RecipeViewModel
     @State var image: UIImage?
     @Environment(\.colorScheme) var colorScheme
 
@@ -71,30 +71,22 @@ struct GridCell: View {
                 ? Color.black.opacity(0.3)
                 : Color.white.opacity(0.3),
                 radius: UIC.shadow * 2)
-        .onAppear {
-            viewModel.getImage(for: recipe)
-        }
-        .onDisappear {
-            viewModel.cancelImageTask(for: recipe)
-        }
         .task {
-            if let loadedImage = await viewModel.imageTasks[recipe.id]?.value {
-                image = loadedImage
-            }
+            image = try? await viewModel.getImage(for: recipe)
         }
     }
 }
 
 struct CCPContainer: View {
-    @State var viewModel = RecipeViewModel()
+    var viewModel = RecipeViewModel()
     var mockedRecipe = RecipeDTO(id: UUID(),
                                  cuisine: "Medeteranian",
                                  name: "Pizza")
     var body: some View {
         HStack {
-            GridCell(viewModel: $viewModel, recipe: mockedRecipe)
-            GridCell(viewModel: $viewModel, recipe: mockedRecipe)
-            GridCell(viewModel: $viewModel, recipe: mockedRecipe)
+            GridCell(viewModel: viewModel, recipe: mockedRecipe)
+            GridCell(viewModel: viewModel, recipe: mockedRecipe)
+            GridCell(viewModel: viewModel, recipe: mockedRecipe)
         }
     }
 }

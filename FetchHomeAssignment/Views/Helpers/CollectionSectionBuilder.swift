@@ -9,17 +9,17 @@ import Foundation
 import SwiftUI
 
 struct SectionWrapper<GenericCell: View>: View {
-    @Binding var viewModel: RecipeViewModel
+    var viewModel: RecipeViewModel
 
     let cuisine: String
-    let cell: (Binding<RecipeViewModel>, RecipeDTO) -> GenericCell
+    let cell: (RecipeViewModel, RecipeDTO) -> GenericCell
 
     var body: some View {
         let recipes = viewModel.groupedRecipes[cuisine] ?? []
 
         Section(header: SectionHeaderView(cuisine: cuisine)) {
             ForEach(recipes) { recipe in
-                cell($viewModel, recipe)
+                cell(viewModel, recipe)
             }
         }
     }

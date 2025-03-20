@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ListView: View {
 
-    @Binding var viewModel: RecipeViewModel
+    @ObservedObject var viewModel: RecipeViewModel
     @Binding var scrollTo: String?
     @Binding var selectedSection: String
 
@@ -19,7 +19,7 @@ struct ListView: View {
     var body: some View {
         LazyVStack {
             ForEach(viewModel.sortedCuisines, id: \.self) { cuisine in
-                SectionWrapper(viewModel: $viewModel, cuisine: cuisine) {
+                SectionWrapper(viewModel: viewModel, cuisine: cuisine) {
                     ListCell(viewModel: $0, recipe: $1)
                 }
             }

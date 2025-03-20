@@ -12,34 +12,36 @@ struct ScrollBarView: View {
     @Binding var scrollTo: String?
     @Binding var selectedSection: String
 
-    var sections: [String]
+    var sections: [String]?
     let animationNameSpace: Namespace.ID
 
     var body: some View {
         ScrollView(.horizontal) {
             ScrollViewReader { proxy in
                 HStack(spacing: 20) {
-                    ForEach(sections, id: \.self) { section in
-                        if selectedSection == section {
-                            Text(section)
-                                .id(section)
-                                .padding(.vertical, 5)
-                                .overlay(alignment: .bottom) {
-                                    Rectangle()
-                                        .frame(height: 2)
-                                        .frame(maxWidth: .infinity)
-                                        .matchedGeometryEffect(id: "underline",
-                                                               in: animationNameSpace)
-                                }
-
-                        } else {
-                            Text(section)
-                                .id(section)
-                                .onTapGesture {
-                                    withAnimation {
-                                        scrollTo = section
+                    if let sections = sections {
+                        ForEach(sections, id: \.self) { section in
+                            if selectedSection == section {
+                                Text(section)
+                                    .id(section)
+                                    .padding(.vertical, 5)
+                                    .overlay(alignment: .bottom) {
+                                        Rectangle()
+                                            .frame(height: 2)
+                                            .frame(maxWidth: .infinity)
+                                            .matchedGeometryEffect(id: "underline",
+                                                                   in: animationNameSpace)
                                     }
-                                }
+
+                            } else {
+                                Text(section)
+                                    .id(section)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            scrollTo = section
+                                        }
+                                    }
+                            }
                         }
                     }
                 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ListCell: View {
 
-    @Binding var viewModel: RecipeViewModel
+    @ObservedObject var viewModel: RecipeViewModel
     @State var image: UIImage?
     @Environment(\.colorScheme) var colorScheme
 
@@ -51,43 +51,32 @@ struct ListCell: View {
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
-                    Text(recipe.cuisine)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                    if let youtubeURL = recipe.youtubeUrl {
+                        Link("Watch on YouTube", destination: youtubeURL)
+                            .foregroundColor(.secondary)
+                            .underline()
+                    }
 
-                        //                        Link("Watch on YouTube",
-                        //                             destination: recipe.youtubeUrl) // create model for the app
-                        //                            .foregroundColor(.accentColor)
-                        //                            .underline()
                 }
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
-
-            .onAppear {
-                viewModel.getImage(for: recipe)
-            }
-            .onDisappear {
-                viewModel.cancelImageTask(for: recipe)
-            }
             .task {
-                if let loadedImage = await viewModel.imageTasks[recipe.id]?.value {
-                    image = loadedImage
-                }
+                image = try? await viewModel.getImage(for: recipe)
             }
         }
     }
 }
 
 struct LCPContainer: View {
-    @State var viewModel = RecipeViewModel()
+    var viewModel = RecipeViewModel()
     var mockedRecipe = RecipeDTO(id: UUID(),
                                  cuisine: "Medeteranian",
                                  name: "Pizza")
     var body: some View {
         VStack {
-            ForEach(0..<50) { _ in 
-                ListCell(viewModel: $viewModel,
+            ForEach(0..<50) { _ in
+                ListCell(viewModel: viewModel,
                          recipe: mockedRecipe)
             }
         }
