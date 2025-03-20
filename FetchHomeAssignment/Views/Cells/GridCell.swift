@@ -58,9 +58,11 @@ struct GridCell: View {
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
-                    Text(recipe.cuisine)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                    if let youtubeURL = recipe.youtubeUrl {
+                        Link("Watch on YouTube", destination: youtubeURL)
+                            .foregroundColor(.secondary)
+                            .underline()
+                    }
                 }
                 .padding(2)
             }
@@ -72,7 +74,11 @@ struct GridCell: View {
                 : Color.white.opacity(0.3),
                 radius: UIC.shadow * 2)
         .task {
-            image = try? await viewModel.getImage(for: recipe)
+            do {
+                image = try await viewModel.getImage(for: recipe)
+            } catch {
+                image = UIImage(systemName: "photo")
+            }
         }
     }
 }
