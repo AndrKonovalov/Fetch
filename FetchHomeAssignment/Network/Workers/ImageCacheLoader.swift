@@ -10,7 +10,7 @@ import UIKit
 
 final class ImageCacheLoader: ImageFetchWorker {
 
-    private let cache = NSCache<NSString, UIImage>()
+    private let cache = DataStore.shared.imageCache
 
     init() { }
 
