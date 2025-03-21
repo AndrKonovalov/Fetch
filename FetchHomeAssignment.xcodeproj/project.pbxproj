@@ -7,14 +7,7 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		F690E3592D783C5800D80B1F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F690E3402D783C5700D80B1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F690E3472D783C5700D80B1F;
-			remoteInfo = FetchHomeAssignment;
-		};
-		F690E3632D783C5900D80B1F /* PBXContainerItemProxy */ = {
+		F61883772D8CF81C00E43F92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F690E3402D783C5700D80B1F /* Project object */;
 			proxyType = 1;
@@ -24,45 +17,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F61883732D8CF81C00E43F92 /* FetchHomeAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchHomeAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F690E3482D783C5700D80B1F /* FetchHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F690E3582D783C5800D80B1F /* FetchHomeAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchHomeAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F690E3622D783C5900D80B1F /* FetchHomeAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchHomeAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F61883742D8CF81C00E43F92 /* FetchHomeAssignmentTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FetchHomeAssignmentTests;
+			sourceTree = "<group>";
+		};
 		F690E34A2D783C5700D80B1F /* FetchHomeAssignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FetchHomeAssignment;
 			sourceTree = "<group>";
 		};
-		F690E35B2D783C5800D80B1F /* FetchHomeAssignmentTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FetchHomeAssignmentTests;
-			sourceTree = "<group>";
-		};
-		F690E3652D783C5900D80B1F /* FetchHomeAssignmentUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FetchHomeAssignmentUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F61883702D8CF81C00E43F92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F690E3452D783C5700D80B1F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E3552D783C5800D80B1F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E35F2D783C5900D80B1F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,8 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				F690E34A2D783C5700D80B1F /* FetchHomeAssignment */,
-				F690E35B2D783C5800D80B1F /* FetchHomeAssignmentTests */,
-				F690E3652D783C5900D80B1F /* FetchHomeAssignmentUITests */,
+				F61883742D8CF81C00E43F92 /* FetchHomeAssignmentTests */,
 				F690E3492D783C5700D80B1F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				F690E3482D783C5700D80B1F /* FetchHomeAssignment.app */,
-				F690E3582D783C5800D80B1F /* FetchHomeAssignmentTests.xctest */,
-				F690E3622D783C5900D80B1F /* FetchHomeAssignmentUITests.xctest */,
+				F61883732D8CF81C00E43F92 /* FetchHomeAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F61883722D8CF81C00E43F92 /* FetchHomeAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61883792D8CF81C00E43F92 /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentTests" */;
+			buildPhases = (
+				F618836F2D8CF81C00E43F92 /* Sources */,
+				F61883702D8CF81C00E43F92 /* Frameworks */,
+				F61883712D8CF81C00E43F92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F61883782D8CF81C00E43F92 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F61883742D8CF81C00E43F92 /* FetchHomeAssignmentTests */,
+			);
+			name = FetchHomeAssignmentTests;
+			packageProductDependencies = (
+			);
+			productName = FetchHomeAssignmentTests;
+			productReference = F61883732D8CF81C00E43F92 /* FetchHomeAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F690E3472D783C5700D80B1F /* FetchHomeAssignment */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F690E36C2D783C5900D80B1F /* Build configuration list for PBXNativeTarget "FetchHomeAssignment" */;
@@ -118,54 +119,6 @@
 			productReference = F690E3482D783C5700D80B1F /* FetchHomeAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F690E3572D783C5800D80B1F /* FetchHomeAssignmentTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F690E36F2D783C5900D80B1F /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentTests" */;
-			buildPhases = (
-				F690E3542D783C5800D80B1F /* Sources */,
-				F690E3552D783C5800D80B1F /* Frameworks */,
-				F690E3562D783C5800D80B1F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F690E3822D783DCF00D80B1F /* PBXTargetDependency */,
-				F690E35A2D783C5800D80B1F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F690E35B2D783C5800D80B1F /* FetchHomeAssignmentTests */,
-			);
-			name = FetchHomeAssignmentTests;
-			packageProductDependencies = (
-			);
-			productName = FetchHomeAssignmentTests;
-			productReference = F690E3582D783C5800D80B1F /* FetchHomeAssignmentTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F690E3612D783C5900D80B1F /* FetchHomeAssignmentUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F690E3722D783C5900D80B1F /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentUITests" */;
-			buildPhases = (
-				F690E35E2D783C5900D80B1F /* Sources */,
-				F690E35F2D783C5900D80B1F /* Frameworks */,
-				F690E3602D783C5900D80B1F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F690E3842D783DD300D80B1F /* PBXTargetDependency */,
-				F690E3642D783C5900D80B1F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F690E3652D783C5900D80B1F /* FetchHomeAssignmentUITests */,
-			);
-			name = FetchHomeAssignmentUITests;
-			packageProductDependencies = (
-			);
-			productName = FetchHomeAssignmentUITests;
-			productReference = F690E3622D783C5900D80B1F /* FetchHomeAssignmentUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,16 +129,12 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					F61883722D8CF81C00E43F92 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = F690E3472D783C5700D80B1F;
+					};
 					F690E3472D783C5700D80B1F = {
 						CreatedOnToolsVersion = 16.2;
-					};
-					F690E3572D783C5800D80B1F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = F690E3472D783C5700D80B1F;
-					};
-					F690E3612D783C5900D80B1F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = F690E3472D783C5700D80B1F;
 					};
 				};
 			};
@@ -207,28 +156,20 @@
 			projectRoot = "";
 			targets = (
 				F690E3472D783C5700D80B1F /* FetchHomeAssignment */,
-				F690E3572D783C5800D80B1F /* FetchHomeAssignmentTests */,
-				F690E3612D783C5900D80B1F /* FetchHomeAssignmentUITests */,
+				F61883722D8CF81C00E43F92 /* FetchHomeAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F61883712D8CF81C00E43F92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F690E3462D783C5700D80B1F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E3562D783C5800D80B1F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E3602D783C5900D80B1F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,21 +179,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F618836F2D8CF81C00E43F92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F690E3442D783C5700D80B1F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E3542D783C5800D80B1F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F690E35E2D783C5900D80B1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,31 +196,54 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F690E35A2D783C5800D80B1F /* PBXTargetDependency */ = {
+		F61883782D8CF81C00E43F92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F690E3472D783C5700D80B1F /* FetchHomeAssignment */;
-			targetProxy = F690E3592D783C5800D80B1F /* PBXContainerItemProxy */;
-		};
-		F690E3642D783C5900D80B1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F690E3472D783C5700D80B1F /* FetchHomeAssignment */;
-			targetProxy = F690E3632D783C5900D80B1F /* PBXContainerItemProxy */;
+			targetProxy = F61883772D8CF81C00E43F92 /* PBXContainerItemProxy */;
 		};
 		F690E3802D783DC900D80B1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = F690E37F2D783DC900D80B1F /* SwiftLintBuildToolPlugin */;
 		};
-		F690E3822D783DCF00D80B1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = F690E3812D783DCF00D80B1F /* SwiftLintBuildToolPlugin */;
-		};
-		F690E3842D783DD300D80B1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = F690E3832D783DD300D80B1F /* SwiftLintBuildToolPlugin */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F618837A2D8CF81C00E43F92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N2YBW8Q7F9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchHomeAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchHomeAssignment";
+			};
+			name = Debug;
+		};
+		F618837B2D8CF81C00E43F92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N2YBW8Q7F9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchHomeAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchHomeAssignment";
+			};
+			name = Release;
+		};
 		F690E36A2D783C5900D80B1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -464,81 +421,18 @@
 			};
 			name = Release;
 		};
-		F690E3702D783C5900D80B1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2YBW8Q7F9;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchHomeAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchHomeAssignment";
-			};
-			name = Debug;
-		};
-		F690E3712D783C5900D80B1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2YBW8Q7F9;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchHomeAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchHomeAssignment";
-			};
-			name = Release;
-		};
-		F690E3732D783C5900D80B1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2YBW8Q7F9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FetchHomeAssignment;
-			};
-			name = Debug;
-		};
-		F690E3742D783C5900D80B1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2YBW8Q7F9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AndreiKonovalov.FetchHomeAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FetchHomeAssignment;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F61883792D8CF81C00E43F92 /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F618837A2D8CF81C00E43F92 /* Debug */,
+				F618837B2D8CF81C00E43F92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F690E3432D783C5700D80B1F /* Build configuration list for PBXProject "FetchHomeAssignment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -553,24 +447,6 @@
 			buildConfigurations = (
 				F690E36D2D783C5900D80B1F /* Debug */,
 				F690E36E2D783C5900D80B1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F690E36F2D783C5900D80B1F /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F690E3702D783C5900D80B1F /* Debug */,
-				F690E3712D783C5900D80B1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F690E3722D783C5900D80B1F /* Build configuration list for PBXNativeTarget "FetchHomeAssignmentUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F690E3732D783C5900D80B1F /* Debug */,
-				F690E3742D783C5900D80B1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -590,16 +466,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		F690E37F2D783DC900D80B1F /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F690E37E2D783D2A00D80B1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
-		F690E3812D783DCF00D80B1F /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F690E37E2D783D2A00D80B1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
-		F690E3832D783DD300D80B1F /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F690E37E2D783D2A00D80B1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";

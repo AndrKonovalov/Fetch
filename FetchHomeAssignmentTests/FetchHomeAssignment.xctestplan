@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "09CEFAF4-5537-4D7F-BBB7-1346AAF07C5F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:FetchHomeAssignment.xcodeproj",
+        "identifier" : "F61883722D8CF81C00E43F92",
+        "name" : "FetchHomeAssignmentTests"
+      }
+    }
+  ],
+  "version" : 1
+}

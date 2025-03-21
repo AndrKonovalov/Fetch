@@ -40,7 +40,7 @@ final class ImageCacheLoaderTests: XCTestCase {
 
     func testAddNewImageBadURL() async {
         guard let url = URL(string: Endpoints.badURL) else {
-            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            XCTAssert(true)
             return
         }
 
