@@ -20,7 +20,6 @@ struct MainContentView: View {
             ScrollView(.vertical) {
                 if viewModel.presentAsList {
                     ListView(viewModel: viewModel,
-                             scrollTo: $scrollTo,
                              selectedSection: $selectedSection,
                              headerMinY: headerMinY)
                 } else {
@@ -49,9 +48,18 @@ struct MainContentView: View {
                 scrollTo = nil
 
                 withAnimation {
-                    selectedSection = newValue
                     proxy.scrollTo(newValue, anchor: .top)
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation {
+                        selectedSection = newValue
+                    }
+                }
+
+            }
+            .refreshable {
+                
+                await viewModel.getRecipes()
             }
         }
     }

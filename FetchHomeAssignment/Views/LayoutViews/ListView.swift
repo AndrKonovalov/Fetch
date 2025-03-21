@@ -11,7 +11,6 @@ import SwiftUI
 struct ListView: View {
 
     @ObservedObject var viewModel: RecipeViewModel
-    @Binding var scrollTo: String?
     @Binding var selectedSection: String
 
     @State var headerMinY: CGFloat
