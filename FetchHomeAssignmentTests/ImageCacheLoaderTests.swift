@@ -18,15 +18,20 @@ final class ImageCacheLoaderTests: XCTestCase {
         imageCacheLoader = ImageCacheLoader()
     }
 
-    override func tearDown() {
-        imageCacheLoader?.clearCache()
+    override func tearDown() async throws  {
+        await imageCacheLoader?.clearCache()
         imageCacheLoader = nil
     }
 
     func testImageAlreadyCached() async {
+        guard let url = URL(string: Endpoints.imageURl) else {
+            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            return
+        }
+
         do {
-            _ = try await imageCacheLoader?.loadImage(from: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/535dfe4e-5d61-4db6-ba8f-7a27b1214f5d/large.jpg")
-            let image = try await imageCacheLoader?.loadImage(from: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/535dfe4e-5d61-4db6-ba8f-7a27b1214f5d/large.jpg")
+            _ = try await imageCacheLoader?.loadImage(from: url)
+            let image = try await imageCacheLoader?.loadImage(from: url)
             XCTAssertNotNil(image)
         } catch {
             XCTFail("Error: \(error)")
@@ -34,8 +39,14 @@ final class ImageCacheLoaderTests: XCTestCase {
     }
 
     func testAddNewImageBadURL() async {
+        guard let url = URL(string: Endpoints.badURL) else {
+            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            return
+        }
+
         do {
-            _ = try await imageCacheLoader?.loadImage(from: Endpoints.badURL)
+            _ = try await imageCacheLoader?.loadImage(from: url)
+            XCTFail("Expected .badURL error, but succeeded without error.")
         } catch let error as URLError where error.code == .badURL {
             XCTAssert(true)
         } catch let error {
@@ -44,8 +55,13 @@ final class ImageCacheLoaderTests: XCTestCase {
     }
 
     func testAddNewImageInvalidURL() async {
+        guard let url = URL(string: Endpoints.invalidURL) else {
+            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            return
+        }
         do {
-            _ = try await imageCacheLoader?.loadImage(from: Endpoints.invalidURL)
+            _ = try await imageCacheLoader?.loadImage(from: url)
+            XCTFail("Expected .unsupportedURL error, but succeeded without error.")
         } catch let error as URLError where error.code == .unsupportedURL {
             XCTAssert(true)
         } catch let error {
@@ -54,8 +70,14 @@ final class ImageCacheLoaderTests: XCTestCase {
     }
 
     func testCannotParseResponseData() async {
+        guard let url = URL(string: Endpoints.validData) else {
+            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            return
+        }
         do {
-            _ = try await imageCacheLoader?.loadImage(from: Endpoints.validData)
+            _ = try await imageCacheLoader?.loadImage(from: url)
+            XCTFail("Expected .cannotParseResponse error, but succeeded without error.")
+
         } catch let error as URLError where error.code == .cannotParseResponse {
             XCTAssert(true)
         } catch let error {
@@ -64,7 +86,11 @@ final class ImageCacheLoaderTests: XCTestCase {
     }
 
     func testSuccessfullyLoadedImage() async throws {
-        let image = try await imageCacheLoader?.loadImage(from: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/535dfe4e-5d61-4db6-ba8f-7a27b1214f5d/large.jpg")
+        guard let url = URL(string: Endpoints.imageURl) else {
+            XCTFail("Invalid test URL string: \(Endpoints.badURL)")
+            return
+        }
+        let image = try await imageCacheLoader?.loadImage(from: url)
         XCTAssertNotNil(image)
     }
 }
