@@ -107,7 +107,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F690E3802D783DC900D80B1F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F690E34A2D783C5700D80B1F /* FetchHomeAssignment */,
@@ -200,10 +199,6 @@
 			isa = PBXTargetDependency;
 			target = F690E3472D783C5700D80B1F /* FetchHomeAssignment */;
 			targetProxy = F61883772D8CF81C00E43F92 /* PBXContainerItemProxy */;
-		};
-		F690E3802D783DC900D80B1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = F690E37F2D783DC900D80B1F /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -463,14 +458,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F690E37F2D783DC900D80B1F /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F690E37E2D783D2A00D80B1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F690E3402D783C5700D80B1F /* Project object */;
 }
