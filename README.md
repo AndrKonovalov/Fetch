@@ -1,4 +1,5 @@
-Summary: Include screen shots or a video of your app highlighting its features
+Summary: 
+- Include screen shots or a video of your app highlighting its features
 video files added to the repository contains main user flows and feature highlights
 
 
