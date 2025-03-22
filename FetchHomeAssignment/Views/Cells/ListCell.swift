@@ -28,8 +28,8 @@ struct ListCell: View {
                        height: UIC.listImageWidth)
                 .cornerRadius(UIC.cornerRadius)
                 .shadow(color: colorScheme == .light
-                        ? Color.black.opacity(0.3)
-                        : Color.white.opacity(0.3),
+                        ? Color.black.opacity(UIC.shadowOpacity)
+                        : Color.white.opacity(UIC.shadowOpacity),
                         radius: UIC.shadow * 2)
             HStack {
                 if let image = image {

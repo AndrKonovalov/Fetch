@@ -41,13 +41,28 @@ struct MainView: View {
 
             case .error:
                 EmptyView()
-                    .transition(.slide)
-                    .onChange( of: viewModel.currentState) { _, newState in
-                        if case .error(let error) = newState {
-                            alertMessage = error.localizedDescription
-                            showAlert = true
-                        }
+            }
+        }
+        .onChange( of: viewModel.currentState) { _, newState in
+            if case .error(let error) = newState {
+                if let err = error as? DecodingError {
+                    switch err {
+                    case .keyNotFound(_, let context):
+                        alertMessage = context.debugDescription
+                    case .typeMismatch( _, let context):
+                        alertMessage = context.debugDescription
+                    case .valueNotFound(_, let context):
+                        alertMessage = context.debugDescription
+                    case .dataCorrupted(let context):
+                        alertMessage = context.debugDescription
+                    @unknown default:
+                        alertMessage = err.localizedDescription
                     }
+                } else {
+                    alertMessage = error.localizedDescription
+                }
+                alertMessage += "\nTry another endpoint URL"
+                showAlert = true
             }
         }
         .task {
@@ -56,7 +71,8 @@ struct MainView: View {
         }
         .animation(.easeInOut(duration: 1.2), value: viewModel.currentState)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text(alertMessage),
+            Alert(title: Text("Oops"),
+                  message: Text(alertMessage),
                   dismissButton: .default(Text("OK")))
         }
     }

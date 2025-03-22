@@ -19,7 +19,7 @@ struct SectionHeaderView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, UIC.padding * 2)
         }
-        .frame(height: 40)
+        .frame(height: UIC.sectionHeaderH)
         .id(cuisine)
         .background(
             GeometryReader { geo in

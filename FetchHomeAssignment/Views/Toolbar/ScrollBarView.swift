@@ -18,7 +18,7 @@ struct ScrollBarView: View {
     var body: some View {
         ScrollView(.horizontal) {
             ScrollViewReader { proxy in
-                HStack(spacing: 20) {
+                HStack(spacing: UIC.spacing) {
                     if let sections = sections {
                         ForEach(sections, id: \.self) { section in
                             if selectedSection == section {

@@ -35,8 +35,8 @@ struct GridCell: View {
                 LinearGradient(stops: [
                     .init(color: .clear, location: 0),
                     .init(color: colorScheme == .light
-                          ? .white.opacity(0.8)
-                          : .black.opacity(0.8),
+                          ? .white.opacity(UIC.opacityStep)
+                          : .black.opacity(UIC.opacityStep),
                           location: 0.4),
                     .init(color: colorScheme == .light
                           ? .white
@@ -72,8 +72,8 @@ struct GridCell: View {
         }
         .frame(width: width, height: width)
         .shadow(color: colorScheme == .light
-                ? Color.black.opacity(0.3)
-                : Color.white.opacity(0.3),
+                ? Color.black.opacity(UIC.shadowOpacity)
+                : Color.white.opacity(UIC.shadowOpacity),
                 radius: UIC.shadow * 2)
         .task {
             do {

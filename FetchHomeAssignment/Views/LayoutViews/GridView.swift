@@ -12,7 +12,7 @@ struct GridView: View {
     @ObservedObject var viewModel: RecipeViewModel
 
     private var gridColumns: [GridItem] {
-        Array(repeating: GridItem(.flexible(minimum: 100)), count: viewModel.columnCount)
+        Array(repeating: GridItem(.flexible(minimum: UIC.minCellWidth)), count: viewModel.columnCount)
     }
     var body: some View {
         LazyVGrid(columns: gridColumns) {

@@ -32,7 +32,7 @@ class RecipeViewModel: ObservableObject {
             let recipesNetworkResponse = try await Task.detached {
                 try await NetworkManager.shared
                     .recipeFetchWorker
-                    .loadRecipes(from: Endpoints.validData)
+                    .loadRecipes(from: Endpoints.mailformedData)
                     .recipes
             }.value
             let mappedRecipes = try recipesNetworkResponse

@@ -32,7 +32,7 @@ struct ControlsBarView: View {
                     Image(systemName: viewModel.presentAsList ? "rectangle.grid.2x2.fill" : "rectangle.grid.1x2.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 25, height: 25)
+                        .frame(width: UIC.toggleWidth)
                 }
                 .foregroundStyle(.gray)
                 .padding(.trailing  )

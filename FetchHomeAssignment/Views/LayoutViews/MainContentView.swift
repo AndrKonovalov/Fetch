@@ -18,48 +18,55 @@ struct MainContentView: View {
 
     var body: some View {
         ScrollViewReader { proxy in
-            ScrollView(.vertical) {
-                if viewModel.presentAsList {
-                    ListView(viewModel: viewModel,
-                             selectedSection: $selectedSection,
-                             headerMinY: headerMinY)
-                } else {
-                    GridView(viewModel: viewModel)
-                }
-            }
-            .padding(.top, 65)
-            .coordinateSpace(name: "scroll")
-            .onPreferenceChange(SectionHeaderPreferenceKey.self) { preferences in
-                let sorted = preferences.sorted { $0.minY < $1.minY }
-                let offset = 50.0
-
-                if let currHeader = preferences.first(where: { $0.id == selectedSection }),
-                   currHeader.minY < offset {
-                    return
-                }
-
-                if let newSection = sorted.first(where: { $0.minY >= 0 }) {
-                    withAnimation {
-                        selectedSection = newSection.id
+            if viewModel.recipes.isEmpty {
+                Text("No Recipes Found")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.primary)
+            } else {
+                ScrollView(.vertical) {
+                    if viewModel.presentAsList {
+                        ListView(viewModel: viewModel,
+                                 selectedSection: $selectedSection,
+                                 headerMinY: headerMinY)
+                    } else {
+                        GridView(viewModel: viewModel)
                     }
                 }
-            }
-            .onChange(of: scrollTo) { _, newValue in
-                guard let newValue else { return }
-                scrollTo = nil
+                .padding(.top, UIC.toolbarPadding)
+                .coordinateSpace(name: "scroll")
+                .onPreferenceChange(SectionHeaderPreferenceKey.self) { preferences in
+                    let sorted = preferences.sorted { $0.minY < $1.minY }
+                    let offset = UIC.headerMinOffset
 
-                withAnimation {
-                    proxy.scrollTo(newValue, anchor: .top)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    withAnimation {
-                        selectedSection = newValue
+                    if let currHeader = preferences.first(where: { $0.id == selectedSection }),
+                       currHeader.minY < offset {
+                        return
+                    }
+
+                    if let newSection = sorted.first(where: { $0.minY >= 0 }) {
+                        withAnimation {
+                            selectedSection = newSection.id
+                        }
                     }
                 }
+                .onChange(of: scrollTo) { _, newValue in
+                    guard let newValue else { return }
+                    scrollTo = nil
 
-            }
-            .refreshable {
-                await viewModel.getRecipes()
+                    withAnimation {
+                        proxy.scrollTo(newValue, anchor: .top)
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        withAnimation {
+                            selectedSection = newValue
+                        }
+                    }
+
+                }
+                .refreshable {
+                    await viewModel.getRecipes()
+                }
             }
         }
     }
