@@ -31,7 +31,8 @@ struct MainView: View {
                 .transition(.opacity)
 
                 VStack {
-                    ControlsBarView(scrollTo: $scrollTo,
+                    ControlsBarView(viewModel: viewModel,
+                                    scrollTo: $scrollTo,
                                     selectedSection: $selectedSection,
                                     sections: viewModel.sortedCuisines,
                                     animationNameSpace: animatedNamespace)

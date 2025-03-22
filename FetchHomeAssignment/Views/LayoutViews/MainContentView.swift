@@ -58,7 +58,6 @@ struct MainContentView: View {
 
             }
             .refreshable {
-                
                 await viewModel.getRecipes()
             }
         }

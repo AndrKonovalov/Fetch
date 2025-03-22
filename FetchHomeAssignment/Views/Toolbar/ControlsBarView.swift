@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ControlsBarView: View {
     @Environment(\.colorScheme) var colorScheme
+
+    @ObservedObject var viewModel: RecipeViewModel
     @Binding var scrollTo: String?
     @Binding var selectedSection: String
     var sections: [String]?
@@ -18,6 +20,23 @@ struct ControlsBarView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+
+                Button {
+                    withAnimation {
+                        viewModel.presentAsList.toggle()
+                    }
+                }
+                label: {
+                    Image(systemName: viewModel.presentAsList ? "rectangle.grid.2x2.fill" : "rectangle.grid.1x2.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                }
+                .foregroundStyle(.gray)
+                .padding(.trailing)
+            }
             ScrollBarView(scrollTo: $scrollTo,
                           selectedSection: $selectedSection,
                           sections: sections,
@@ -31,6 +50,7 @@ struct ControlsBarView: View {
 struct CBVPContainer: View {
 
     @Namespace private var animatedNamespace
+    var viewModel = RecipeViewModel()
 
     @State var scrollTo: String? = "aaa"
     @State var selectedSection: String = "asdfsdf"
@@ -44,7 +64,8 @@ struct CBVPContainer: View {
     ]
 
     var body: some View {
-        ControlsBarView(scrollTo: $scrollTo,
+        ControlsBarView(viewModel: viewModel,
+                        scrollTo: $scrollTo,
                         selectedSection: $selectedSection,
                         sections: sections,
                         animationNameSpace: animatedNamespace)
