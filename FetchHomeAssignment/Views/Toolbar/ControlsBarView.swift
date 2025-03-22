@@ -35,7 +35,7 @@ struct ControlsBarView: View {
                         .frame(width: 25, height: 25)
                 }
                 .foregroundStyle(.gray)
-                .padding(.trailing)
+                .padding(.trailing  )
             }
             ScrollBarView(scrollTo: $scrollTo,
                           selectedSection: $selectedSection,

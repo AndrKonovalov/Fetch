@@ -14,6 +14,7 @@ struct MainContentView: View {
     @Binding var selectedSection: String
 
     @State var headerMinY: CGFloat = 0
+    @State private var controlsBarHeight: CGFloat = 0
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -26,7 +27,7 @@ struct MainContentView: View {
                     GridView(viewModel: viewModel)
                 }
             }
-            .padding(.top)
+            .padding(.top, 65)
             .coordinateSpace(name: "scroll")
             .onPreferenceChange(SectionHeaderPreferenceKey.self) { preferences in
                 let sorted = preferences.sorted { $0.minY < $1.minY }
