@@ -12,7 +12,9 @@ struct GridCell: View {
 
     @ObservedObject var viewModel: RecipeViewModel
     @State var image: UIImage?
+
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.openURL) var openURL
 
     var recipe: RecipeDTO
 
@@ -58,11 +60,11 @@ struct GridCell: View {
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
-                    if let youtubeURL = recipe.youtubeUrl {
-                        Link("Watch on YouTube", destination: youtubeURL)
-                            .foregroundColor(.secondary)
-                            .underline()
-                    }
+                    Text(recipe.cuisine)
+                        .multilineTextAlignment(.leading)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.secondary)
                 }
                 .padding(2)
             }
@@ -78,6 +80,11 @@ struct GridCell: View {
                 image = try await viewModel.getImage(for: recipe)
             } catch {
                 image = UIImage(systemName: "photo")
+            }
+        }
+        .onTapGesture {
+            if let youtubeURL = recipe.youtubeUrl {
+                openURL(youtubeURL)
             }
         }
     }
